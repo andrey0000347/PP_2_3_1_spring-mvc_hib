@@ -21,7 +21,7 @@ public class UserRepository {
     public List<User> findAll() {
         return entityManager.createQuery("SELECT u FROM User u", User.class).getResultList();
     }
-    @Transactional
+    
     public void save(User user) {
         if (user.getId() == null) {
             entityManager.persist(user);
@@ -29,7 +29,7 @@ public class UserRepository {
             entityManager.merge(user);
         }
     }
-    @Transactional
+    
     public void deleteById(Long id) {
         User user = findById(id);
         if (user != null) {
